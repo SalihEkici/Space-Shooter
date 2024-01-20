@@ -25,14 +25,23 @@ public class Player : MonoBehaviour
     private bool _isShieldActive = false;
     [SerializeField]
     private GameObject _shieldVisualizer;
+    [SerializeField]
+    private GameObject _thrusterVisualizer;
+    [SerializeField]
+    private GameObject _rightEngine;
+    [SerializeField]
+    private GameObject _leftEngine;
     private int _score;
     private UIManager _uiManager;
+    [SerializeField]
+    private AudioSource _laserShotAudio;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0, -1, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<Spawn_Manager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        
         if (_spawnManager == null)
         {
             Debug.LogError("Spawn Manager is null");
@@ -45,6 +54,7 @@ public class Player : MonoBehaviour
         CalculateMovement();
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFireTime)
         {
+            _laserShotAudio.Play();
             CharacterAttack();
         }
     }
@@ -56,6 +66,14 @@ public class Player : MonoBehaviour
 
         // Player movement
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+        if (verticalInput != 0)
+        {
+            _thrusterVisualizer.SetActive(true);
+        }
+        else
+        {
+            _thrusterVisualizer.SetActive(false);
+        }
         if(_isSpeedActive == true)
         {
             transform.Translate(direction * Time.deltaTime * _playerSpeed*2);
@@ -103,7 +121,13 @@ public class Player : MonoBehaviour
             UpdateLives(_playerHealth);
 
         }
-
+        if(_playerHealth == 2) { 
+            _rightEngine.SetActive(true);
+        }
+        if (_playerHealth == 1)
+        {
+            _leftEngine.SetActive(true);
+        }
         if (_playerHealth < 1) {
             _spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);

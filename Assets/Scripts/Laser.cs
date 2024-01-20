@@ -6,7 +6,7 @@ public class Laser : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 8.0f;
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -20,4 +20,6 @@ public class Laser : MonoBehaviour
             }
         }
     }
+
+    
 }

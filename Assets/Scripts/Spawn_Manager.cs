@@ -15,27 +15,32 @@ public class Spawn_Manager : MonoBehaviour
     [SerializeField]
     private GameObject _shieldPowerUpPrefab;
 
-
     private bool _stopSpawning = false;
     private int powerupID;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnRoutine());
-        StartCoroutine(SpawnPowerupRoutine());
+        
     }
 
     IEnumerator SpawnRoutine()
     {
+        yield return new WaitForSeconds(2.0f);
         while (_stopSpawning == false)
         {
+            
+           
             GameObject newEnemy = Instantiate(_enemyPrefab, new Vector3(Random.Range(-9, 9), 6.0f, 0), Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
-            yield return new WaitForSeconds(2);
+          
+            
+            
+            yield return new WaitForSeconds(1);
         }
     }
     IEnumerator SpawnPowerupRoutine()
     {
+        yield return new WaitForSeconds(2.0f);
         while (_stopSpawning == false)
         {
             powerupID = Random.Range(0, 3);
@@ -53,6 +58,11 @@ public class Spawn_Manager : MonoBehaviour
             }
             yield return new WaitForSeconds(Random.Range(3,8));
         }
+    }
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnRoutine());
+        StartCoroutine(SpawnPowerupRoutine());
     }
     public void OnPlayerDeath()
     {

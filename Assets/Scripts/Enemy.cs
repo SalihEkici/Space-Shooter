@@ -9,13 +9,22 @@ public class Enemy : MonoBehaviour
     private float _speed = 1.0f;
     public GameObject enemy;
     private Player _player;
-    
-
+    Animator m_Animator;
     void Start()
     {
         transform.position = new Vector3(Random.Range(-9, 9), 6.0f, 0);
          _player = GameObject.Find("Player").GetComponent<Player>();
-}
+        if ( _player == null )
+        {
+            Debug.LogError("PLAYER IS NULL");
+        }
+        m_Animator = gameObject.GetComponent<Animator>();
+        if (m_Animator == null)
+        {
+            Debug.LogError("Animator IS NULL");
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,11 +40,15 @@ public class Enemy : MonoBehaviour
     {
         
         if (other.tag == "Laser") {
-            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+            m_Animator.SetTrigger("OnEnemyDeath");
+            GetComponent<BoxCollider2D>().enabled = false;
+            _speed = 0f;
+            Destroy(this.gameObject, 2.8f);
+
             //add 10 score
             _player.AddScore(10);
-            Destroy(other.gameObject);
-
+            
         }
         if (other.tag == "Player")
         {
@@ -43,8 +56,11 @@ public class Enemy : MonoBehaviour
             if (_player != null) {
                 _player.Damage();
             }
-            Destroy(this.gameObject);
+            m_Animator.SetTrigger("OnEnemyDeath");
+            _speed = 0;
+            Destroy(this.gameObject, 2.8f);
         }
-       
+        
     }
+
 }
