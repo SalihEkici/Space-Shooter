@@ -6,11 +6,10 @@ public class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.0f;
+    [SerializeField]
+    private AudioClip _clip;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -26,9 +25,10 @@ public class Powerup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
-
+        
         if (player != null)
         {
+            AudioSource.PlayClipAtPoint(_clip, transform.position);
             switch (gameObject.tag)
             {
                 case "Tripleshot Powerup":

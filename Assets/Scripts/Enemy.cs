@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     private float _speed = 1.0f;
     public GameObject enemy;
     private Player _player;
-    Animator m_Animator;
+    private Animator m_Animator;
+    private AudioSource m_AudioSource;
     void Start()
     {
         transform.position = new Vector3(Random.Range(-9, 9), 6.0f, 0);
@@ -23,7 +24,11 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Animator IS NULL");
         }
-
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
+        if (m_AudioSource == null)
+        {
+            Debug.LogError("Audio Source for Enemy is NULL");
+        }
     }
 
     // Update is called once per frame
@@ -44,6 +49,7 @@ public class Enemy : MonoBehaviour
             m_Animator.SetTrigger("OnEnemyDeath");
             GetComponent<BoxCollider2D>().enabled = false;
             _speed = 0f;
+            m_AudioSource.Play();
             Destroy(this.gameObject, 2.8f);
 
             //add 10 score
@@ -58,6 +64,7 @@ public class Enemy : MonoBehaviour
             }
             m_Animator.SetTrigger("OnEnemyDeath");
             _speed = 0;
+            m_AudioSource.Play();
             Destroy(this.gameObject, 2.8f);
         }
         
