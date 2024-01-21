@@ -908,7 +908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &723076150
 Animator:
   serializedVersion: 3
@@ -1022,7 +1022,7 @@ Transform:
   - {fileID: 343308767}
   - {fileID: 1870223779}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811160283
 GameObject:
@@ -1041,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &811160284
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,7 +1171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029053525
 GameObject:
@@ -1572,7 +1572,7 @@ RectTransform:
   - {fileID: 457002261}
   - {fileID: 1429544152}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1693,6 +1693,7 @@ GameObject:
   - component: {fileID: 1407518566}
   - component: {fileID: 1407518565}
   - component: {fileID: 1407518568}
+  - component: {fileID: 1407518569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1712,6 +1713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b703aa5095eb3f94f8bc8b3544d91fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerOne: 1
+  isPlayerTwo: 0
   _playerSpeed: 15
   _fireRate: 0.1
   _laserPrefab: {fileID: 1131940544902237552, guid: ce5f6a45c3e552a449639389905fb4c5,
@@ -1723,7 +1726,6 @@ MonoBehaviour:
   _isSpeedActive: 0
   _isShieldActive: 0
   _shieldVisualizer: {fileID: 614355788}
-  _thrusterVisualizer: {fileID: 811160283}
   _rightEngine: {fileID: 598104301}
   _leftEngine: {fileID: 1029053525}
   _laserShotAudio: {fileID: 1870223780}
@@ -1793,7 +1795,7 @@ Transform:
   - {fileID: 598104303}
   - {fileID: 1029053527}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1407518568
 BoxCollider2D:
@@ -1821,6 +1823,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1432774, y: 3.9161787}
   m_EdgeRadius: 0
+--- !u!95 &1407518569
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407518564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 922154a95c73c4745ba608018ed80c9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1429544151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,7 +2238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656711999
 GameObject:
@@ -2276,6 +2297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b703aa5095eb3f94f8bc8b3544d91fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerOne: 0
+  isPlayerTwo: 1
   _playerSpeed: 15
   _fireRate: 0.1
   _laserPrefab: {fileID: 1131940544902237552, guid: ce5f6a45c3e552a449639389905fb4c5,
@@ -2287,7 +2310,6 @@ MonoBehaviour:
   _isSpeedActive: 0
   _isShieldActive: 0
   _shieldVisualizer: {fileID: 1240994390}
-  _thrusterVisualizer: {fileID: 723076149}
   _rightEngine: {fileID: 1219978564}
   _leftEngine: {fileID: 1488137536}
   _laserShotAudio: {fileID: 1870223780}
@@ -2507,7 +2529,7 @@ PrefabInstance:
     - target: {fileID: 7136209458989075909, guid: d3071780aeaf21549b2a58b0cb1d2e9d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7136209458989075909, guid: d3071780aeaf21549b2a58b0cb1d2e9d,
         type: 3}

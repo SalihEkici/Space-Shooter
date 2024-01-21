@@ -1409,6 +1409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b703aa5095eb3f94f8bc8b3544d91fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerOne: 1
+  isPlayerTwo: 0
   _playerSpeed: 15
   _fireRate: 0.1
   _laserPrefab: {fileID: 1131940544902237552, guid: ce5f6a45c3e552a449639389905fb4c5,
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGameOver: 0
+  isCoopMode: 0
 --- !u!4 &1625108309
 Transform:
   m_ObjectHideFlags: 0
