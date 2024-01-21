@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -35,16 +36,31 @@ public class Player : MonoBehaviour
     private UIManager _uiManager;
     [SerializeField]
     private AudioSource _laserShotAudio;
+    private GameManager _gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, -1, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<Spawn_Manager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (_gameManager.isCoopMode == false)
+        {
+            transform.position = new Vector3(0, -1, 0);
+        }
+        
         
         if (_spawnManager == null)
         {
             Debug.LogError("Spawn Manager is null");
+        }
+        if (_uiManager == null)
+        {
+            Debug.LogError("UI Manager is null");
+               
+        }
+        if ( _gameManager == null)
+        {
+            Debug.LogError("Game Manager is null");
         }
     }
 
@@ -179,6 +195,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy Laser") {
+            Destroy(collision.gameObject);
             Damage();
         }
     }

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool _isGameOver;
+    [SerializeField]
+    public bool isCoopMode;
     // Start is called before the first frame update
     public void GameOver()
     {
