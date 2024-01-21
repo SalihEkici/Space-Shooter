@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         {
             _laserShotAudio.Play();
             CharacterAttack();
-        }
+        } 
     }
 
     void CalculateMovement()
@@ -176,4 +176,10 @@ public class Player : MonoBehaviour
         _uiManager.UpdateLives(currentLives);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy Laser") {
+            Damage();
+        }
+    }
 }
