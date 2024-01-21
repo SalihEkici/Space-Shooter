@@ -10,6 +10,7 @@ TagManager:
   - Shield Powerup
   - Shield
   - Asteroid
+  - Enemy Laser
   layers:
   - Default
   - TransparentFX
