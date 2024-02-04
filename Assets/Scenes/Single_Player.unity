@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1390,6 +1390,8 @@ GameObject:
   - component: {fileID: 1407518566}
   - component: {fileID: 1407518565}
   - component: {fileID: 1407518568}
+  - component: {fileID: 1407518569}
+  - component: {fileID: 1407518570}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1422,7 +1424,6 @@ MonoBehaviour:
   _isSpeedActive: 0
   _isShieldActive: 0
   _shieldVisualizer: {fileID: 614355788}
-  _thrusterVisualizer: {fileID: 811160283}
   _rightEngine: {fileID: 598104301}
   _leftEngine: {fileID: 1029053525}
   _laserShotAudio: {fileID: 1870223780}
@@ -1520,6 +1521,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1432774, y: 3.9161787}
   m_EdgeRadius: 0
+--- !u!95 &1407518569
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407518564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c677bc77344ecc14897f1b718c8d677e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1407518570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407518564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da60f111fcf89742addfc07aaa07128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1429544151
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<Spawn_Manager>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
 
         if (_gameManager.isCoopMode == false)
         {
@@ -95,23 +94,53 @@ public class Player : MonoBehaviour
 
     void MovementPlayer1()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        KeyCode up = KeyCode.W;
+        KeyCode down = KeyCode.S;
+        KeyCode left = KeyCode.A;
+        KeyCode right = KeyCode.D;
 
-        // Player movement
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
         {
             
             if (_isSpeedActive == true)
             {
-                transform.Translate(direction * Time.deltaTime * _playerSpeed * 1.5f);
+                if (Input.GetKey(up))
+                {
+                    transform.Translate(Vector3.up * _playerSpeed * 1.5f * Time.deltaTime);
+                }
+                if (Input.GetKey(down))
+                {
+                    transform.Translate(Vector3.down * _playerSpeed * 1.5f * Time.deltaTime);
+                }
+                if (Input.GetKey(left))
+                {
+                    transform.Translate(Vector3.left * _playerSpeed * 1.5f * Time.deltaTime);
 
-
+                }
+                if (Input.GetKey(right))
+                {
+                    transform.Translate(Vector3.right * _playerSpeed * 1.5f * Time.deltaTime);
+                }
             }
             else
             {
-                transform.Translate(direction * Time.deltaTime * _playerSpeed);
+                if (Input.GetKey(up))
+                {
+                    transform.Translate(Vector3.up * _playerSpeed * Time.deltaTime);
+                }
+                if (Input.GetKey(down))
+                {
+                    transform.Translate(Vector3.down * _playerSpeed * Time.deltaTime);
+                }
+                if (Input.GetKey(left))
+                {
+                    transform.Translate(Vector3.left * _playerSpeed * Time.deltaTime);
+
+                }
+                if (Input.GetKey(right))
+                {
+                    transform.Translate(Vector3.right * _playerSpeed * Time.deltaTime);
+                }
             }
             // Player bounds
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
