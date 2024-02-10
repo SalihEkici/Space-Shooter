@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
     KeyCode up = KeyCode.W;
     KeyCode down = KeyCode.S;
     KeyCode left = KeyCode.A;
@@ -14,8 +13,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(up))
