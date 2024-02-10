@@ -17,12 +17,7 @@ public class Spawn_Manager : MonoBehaviour
 
     private bool _stopSpawning = false;
     private int powerupID;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     IEnumerator SpawnRoutine()
     {
         yield return new WaitForSeconds(2.0f);

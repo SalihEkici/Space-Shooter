@@ -13,31 +13,30 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
     [SerializeField]
-    private GameObject _laserPrefab;
-    [SerializeField]
     private int _playerHealth = 3;
     private float _nextFireTime = 0f;
     [SerializeField]
-    private GameObject _tripleShotPrefab;
-    private Spawn_Manager _spawnManager;
-    [SerializeField]
-    private bool _isTripleShotActive = false;
+    private GameObject _laserPrefab;
     [SerializeField]
     private bool _isSpeedActive = false;
     [SerializeField]
     private bool _isShieldActive = false;
     [SerializeField]
+    private bool _isTripleShotActive = false;
+    [SerializeField]
+    private AudioSource _laserShotAudio;
+    private GameManager _gameManager;
+    [SerializeField]
     private GameObject _shieldVisualizer;
+    [SerializeField]
+    private GameObject _tripleShotPrefab;
+    private Spawn_Manager _spawnManager;
     [SerializeField]
     private GameObject _rightEngine;
     [SerializeField]
     private GameObject _leftEngine;
     private int _score;
     private UIManager _uiManager;
-    [SerializeField]
-    private AudioSource _laserShotAudio;
-    private GameManager _gameManager;
-    // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Script attached to: " + gameObject.name);
@@ -66,7 +65,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPlayerOne == true)
@@ -142,7 +140,7 @@ public class Player : MonoBehaviour
                     transform.Translate(Vector3.right * _playerSpeed * Time.deltaTime);
                 }
             }
-            // Player bounds
+            // Player bounds to appear on other side
             transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
             if (transform.position.x < -9.2f)
             {
@@ -206,7 +204,7 @@ public class Player : MonoBehaviour
                     transform.Translate(Vector3.right * _playerSpeed * Time.deltaTime);
                 }
 
-                // Player bounds
+                // Player bounds to appear on other side
                 transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
                 if (transform.position.x < -9.2f)
                 {
@@ -265,30 +263,8 @@ public class Player : MonoBehaviour
             Debug.Log(_playerHealth);
         }
 
-        public void TripleShotActive()
-        {
-            _isTripleShotActive = true;
-            StartCoroutine(StartTripleShotCoroutine());
-        }
 
-        IEnumerator StartTripleShotCoroutine()
-        {
-            yield return new WaitForSeconds(5);
-            _isTripleShotActive = false;
-        }
-
-        public void SpeedActive()
-        {
-            _isSpeedActive = true;
-            StartCoroutine(StartSpeedPowerupCoroutine());
-
-        }
-        IEnumerator StartSpeedPowerupCoroutine()
-        {
-            yield return new WaitForSeconds(5);
-            _isSpeedActive = false;
-        }
-       public  void ShieldActive()
+        public void ShieldActive()
         {
             _isShieldActive = true;
             _shieldVisualizer.SetActive(true);
@@ -312,6 +288,29 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 Damage();
             }
+        }
+        public void TripleShotActive()
+        {
+            _isTripleShotActive = true;
+            StartCoroutine(StartTripleShotCoroutine());
+        }
+
+        IEnumerator StartTripleShotCoroutine()
+        {
+            yield return new WaitForSeconds(5);
+            _isTripleShotActive = false;
+        }
+
+        public void SpeedActive()
+        {
+            _isSpeedActive = true;
+            StartCoroutine(StartSpeedPowerupCoroutine());
+
+        }
+        IEnumerator StartSpeedPowerupCoroutine()
+        {
+            yield return new WaitForSeconds(5);
+            _isSpeedActive = false;
         }
     
 }

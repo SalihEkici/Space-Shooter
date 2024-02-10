@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &811160284
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,18 +1415,18 @@ MonoBehaviour:
   isPlayerTwo: 0
   _playerSpeed: 15
   _fireRate: 0.1
+  _playerHealth: 3
   _laserPrefab: {fileID: 1131940544902237552, guid: ce5f6a45c3e552a449639389905fb4c5,
     type: 3}
-  _playerHealth: 3
-  _tripleShotPrefab: {fileID: 124016788770708875, guid: f0bc375bac941b849a799c59c22ea445,
-    type: 3}
-  _isTripleShotActive: 0
   _isSpeedActive: 0
   _isShieldActive: 0
+  _isTripleShotActive: 0
+  _laserShotAudio: {fileID: 1870223780}
   _shieldVisualizer: {fileID: 614355788}
+  _tripleShotPrefab: {fileID: 124016788770708875, guid: f0bc375bac941b849a799c59c22ea445,
+    type: 3}
   _rightEngine: {fileID: 598104301}
   _leftEngine: {fileID: 1029053525}
-  _laserShotAudio: {fileID: 1870223780}
 --- !u!212 &1407518566
 SpriteRenderer:
   m_ObjectHideFlags: 0
